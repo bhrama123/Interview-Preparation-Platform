@@ -1,0 +1,401 @@
+/* ==========================================================
+   GLOBAL
+========================================================== */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:#f5f8ff;
+  transition:.3s;
+}
+
+.container{
+  padding-top:40px;
+}
+
+/* ==========================================================
+   HEADINGS
+========================================================== */
+
+.display-3{
+  font-size:55px;
+  font-weight:bold;
+}
+
+.display-4{
+  font-size:45px;
+  font-weight:bold;
+}
+
+.lead{
+  font-size:22px;
+}
+
+h1,h2,h3,h4,h5{
+  font-weight:700;
+}
+
+/* ==========================================================
+   BUTTONS
+========================================================== */
+
+.btn{
+  border-radius:12px;
+  font-weight:600;
+  transition:.3s;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+}
+
+/* ==========================================================
+   CARD
+========================================================== */
+
+.card{
+  border:none;
+  border-radius:20px;
+  transition:.3s;
+  box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.card:hover{
+  transform:translateY(-6px);
+}
+
+/* ==========================================================
+   HOME PAGE
+========================================================== */
+
+.hero-section{
+  background:linear-gradient(135deg,#2563eb,#06b6d4);
+  color:white;
+  padding:100px 20px;
+}
+
+.feature-card{
+  background:white;
+  border:none;
+  border-radius:20px;
+  padding:35px;
+  text-align:center;
+  transition:.35s;
+  height:100%;
+  box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.feature-card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 20px 40px rgba(0,0,0,.15);
+}
+
+.feature-card h3{
+  margin-top:20px;
+}
+
+.stats-section{
+  background:#111827;
+  color:white;
+  padding:70px 0;
+}
+
+.stats-section h1{
+  font-size:55px;
+}
+
+footer{
+  font-size:18px;
+}
+
+/* ==========================================================
+   WELCOME CARD
+========================================================== */
+
+.welcome-card{
+    background:linear-gradient(135deg,#2563eb,#06b6d4);
+    color:white;
+    border-radius:30px;
+    padding:200px;
+    overflow:hidden;
+}
+.welcome-card p{
+    color:rgba(255,255,255,.9);
+
+
+.welcome-img{
+    width:150px;
+    animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+
+0%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-12px);
+}
+
+100%{
+transform:translateY(0);
+}
+
+}
+
+/* ==========================================================
+   DASHBOARD STATS
+========================================================== */
+
+.stats-card{
+    border-radius:25px;
+    padding:35px;
+    color:white;
+    text-align:center;
+    box-shadow:0 15px 30px rgba(0,0,0,.2);
+    transition:.3s;
+}
+
+.stats-card:hover{
+  transform:translateY(-8px);
+}
+
+/* ==========================================================
+   DASHBOARD CARD
+========================================================== */
+
+.dashboard-card{
+  background:#fff;
+  border-radius:22px;
+  padding:45px;
+  text-align:center;
+  cursor:pointer;
+  overflow:hidden;
+  position:relative;
+  transition:.35s;
+  box-shadow:0 10px 25px rgba(0,0,0,.12);
+  height:100%;
+}
+
+.dashboard-card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(
+      120deg,
+      transparent,
+      rgba(255,255,255,.4),
+      transparent
+  );
+  transition:.6s;
+}
+
+.dashboard-card:hover::before{
+  left:100%;
+}
+
+.dashboard-card::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:5px;
+  background:linear-gradient(90deg,#2563eb,#06b6d4);
+  transform:scaleX(0);
+  transition:.3s;
+}
+
+.dashboard-card:hover::after{
+  transform:scaleX(1);
+}
+
+.dashboard-card:hover{
+    transform:translateY(-15px) scale(1.04);
+    box-shadow:0 20px 45px rgba(37,99,235,.25);
+}
+
+.dashboard-card svg{
+  transition:.4s;
+}
+
+.dashboard-card:hover svg{
+  transform:scale(1.25) rotate(8deg);
+}
+
+.dashboard-card h3{
+  margin-top:18px;
+}
+
+.dashboard-card p{
+  color:#666;
+}
+
+/* ==========================================================
+   FORMS
+========================================================== */
+
+.form-control,
+.form-select{
+  border-radius:12px;
+}
+
+.form-control:focus,
+.form-select:focus{
+  box-shadow:none;
+}
+
+/* ==========================================================
+   TABLE
+========================================================== */
+
+.table{
+  background:white;
+}
+
+.table th{
+  text-align:center;
+}
+
+.table td{
+  vertical-align:middle;
+}
+
+.progress{
+  border-radius:20px;
+}
+
+.progress-bar{
+  font-weight:bold;
+}
+
+/* ==========================================================
+   DARK MODE
+========================================================== */
+
+body[data-theme="dark"]{
+  background:#111827;
+  color:white;
+}
+
+body[data-theme="dark"] .card,
+body[data-theme="dark"] .feature-card,
+body[data-theme="dark"] .dashboard-card{
+  background:#1f2937;
+  color:white;
+}
+
+body[data-theme="dark"] .dashboard-card p{
+  color:#d1d5db;
+}
+
+body[data-theme="dark"] .dashboard-card:hover{
+  box-shadow:0 20px 45px rgba(59,130,246,.4);
+}
+
+body[data-theme="dark"] .welcome-card{
+  background:linear-gradient(135deg,#1e3a8a,#0f172a);
+}
+
+body[data-theme="dark"] .table{
+  color:white;
+}
+
+body[data-theme="dark"] .table td,
+body[data-theme="dark"] .table th{
+  color:white;
+}
+
+body[data-theme="dark"] input,
+body[data-theme="dark"] select{
+  background:#374151;
+  color:white;
+  border:1px solid #555;
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media(max-width:768px){
+
+.display-3{
+font-size:36px;
+}
+
+.display-4{
+font-size:32px;
+}
+
+.lead{
+font-size:18px;
+}
+
+.welcome-card{
+    background: linear-gradient(135deg,#2563eb,#06b6d4);
+    color:white;
+    border-radius:20px;
+    padding:30px 40px;
+    min-height:300px;
+
+    display:flex;
+    align-items:center;
+}
+.welcome-img {
+  width: 150px;
+  height: 150px;
+  max-width: 150px;
+  max-height: 150px;
+  object-fit: contain;
+  display: block;
+  margin: auto;
+}
+.btn{
+width:100%;
+margin-bottom:10px;
+}
+
+}
+.icon-circle{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:auto;
+    color:white;
+    font-size:34px;
+    box-shadow:0 12px 25px rgba(0,0,0,.2);
+    transition:.3s;
+    z-index:1;
+    pointer-events:none;
+}
+
+.dashboard-card:hover .icon-circle{
+    transform:scale(1.12) rotate(10deg);
+}
+@keyframes slideDown{
+    from{
+        opacity:0;
+        transform:translateY(-30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.welcome-card{
+    animation:slideDown .8s;
+}
+}
