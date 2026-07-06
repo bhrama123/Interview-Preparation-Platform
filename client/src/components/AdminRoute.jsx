@@ -7,10 +7,7 @@ function AdminRoute({ children }) {
     return <Navigate to="/login" replace />;
   }
 
-  if (!user.isAdmin) {
-    return <Navigate to="/dashboard" replace />;
-  }
-
+  // Allow every logged-in user (for development)
   return children;
 }
 

@@ -142,27 +142,29 @@ npm run dev
 
 ### Home Page
 
-_Add Home Page Screenshot_
+![Home Page](screenshots/home.png)
 
 ### Login Page
 
-_Add Login Screenshot_
+![Login Page](screenshots/login.png)
 
 ### Dashboard
 
-_Add Dashboard Screenshot_
+![Dashboard](screenshots/dashboard.png)
 
 ### DSA Practice
 
-_Add DSA Practice Screenshot_
+![DSA Practice](screenshots/dsa.png)
 
 ### MCQ Quiz
 
-_Add MCQ Screenshot_
+![MCQ Quiz](screenshots/quiz.png)
 
 ### Admin Panel
+![Admin Panel](screenshots/admin.png)
 
-_Add Admin Panel Screenshot_
+### Leaderboard
+![Leaderboard](screenshots/leaderboard.png)
 
 ---
 
