@@ -35,6 +35,7 @@ app.use("/api/profile", profileRoutes);
 app.use("/api/quizresults", quizResultRoutes);
 app.use("/api/admin", adminRoutes);
 
+console.log("MONGO_URI:", process.env.MONGO_URI);
 // MongoDB Connection
 mongoose
   .connect(process.env.MONGO_URI)
