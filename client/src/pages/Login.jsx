@@ -7,51 +7,67 @@ function Login() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const loginUser = async (e) => {
     e.preventDefault();
 
     try {
+      setLoading(true);
+
       const res = await api.post("/auth/login", {
         email,
         password,
       });
 
       localStorage.setItem("token", res.data.token);
-      localStorage.setItem("user", JSON.stringify(res.data.user));
+      localStorage.setItem(
+        "user",
+        JSON.stringify(res.data.user)
+      );
 
       alert("🎉 Login Successful!");
 
       navigate("/dashboard");
     } catch (err) {
-      console.log(err);
+      console.error("Login Error:", err);
 
-      alert(err.response?.data?.message || "Login Failed");
+      if (err.response) {
+        alert(
+          err.response.data?.message ||
+            "Server Error"
+        );
+      } else if (err.request) {
+        alert(
+          "Cannot connect to backend server. Please try again."
+        );
+      } else {
+        alert("Login Failed");
+      }
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div className="container mt-5">
-
       <div className="row justify-content-center">
-
         <div className="col-md-5">
-
           <div className="card shadow-lg p-4">
-
             <h2 className="text-center text-primary mb-4">
               Welcome Back 👋
             </h2>
 
             <form onSubmit={loginUser}>
-
               <div className="mb-3">
                 <input
                   type="email"
                   className="form-control"
                   placeholder="Enter Email"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) =>
+                    setEmail(e.target.value)
+                  }
                   required
                 />
               </div>
@@ -62,7 +78,9 @@ function Login() {
                   className="form-control"
                   placeholder="Enter Password"
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) =>
+                    setPassword(e.target.value)
+                  }
                   required
                 />
               </div>
@@ -70,10 +88,10 @@ function Login() {
               <button
                 type="submit"
                 className="btn btn-primary w-100"
+                disabled={loading}
               >
-                Login
+                {loading ? "Logging in..." : "Login"}
               </button>
-
             </form>
 
             <hr />
@@ -87,13 +105,9 @@ function Login() {
                 Register
               </Link>
             </p>
-
           </div>
-
         </div>
-
       </div>
-
     </div>
   );
 }
