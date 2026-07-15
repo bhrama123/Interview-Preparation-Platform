@@ -1,70 +1,74 @@
 :root {
   --text: #6b6375;
   --text-h: #08060d;
-  --bg: #fff;
+  --bg: #ffffff;
   --border: #e5e4e7;
   --code-bg: #f4f3ec;
   --accent: #aa3bff;
   --accent-bg: rgba(170, 59, 255, 0.1);
   --accent-border: rgba(170, 59, 255, 0.5);
   --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --shadow:
+    rgba(0, 0, 0, 0.1) 0 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+
+  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
+  --heading: system-ui, "Segoe UI", Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
-  color-scheme: light dark;
+
   color: var(--text);
   background: var(--bg);
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
+/* ===========================
+   GENERAL
+=========================== */
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
 }
 
 body {
   margin: 0;
+  min-height: 100vh;
+  background: #f5f7fb;
+  color: #222;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
 }
 
 #root {
   width: 1126px;
   max-width: 100%;
   margin: 0 auto;
+
   text-align: center;
+
   border-inline: 1px solid var(--border);
-  min-height: 100svh;
+
+  min-height: 100vh;
+
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
 }
+
+/* ===========================
+   HEADINGS
+=========================== */
 
 h1,
 h2 {
@@ -77,23 +81,22 @@ h1 {
   font-size: 56px;
   letter-spacing: -1.68px;
   margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
 }
+
 h2 {
   font-size: 24px;
   line-height: 118%;
   letter-spacing: -0.24px;
   margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
 }
+
 p {
   margin: 0;
 }
+
+/* ===========================
+   CODE
+=========================== */
 
 code,
 .counter {
@@ -109,55 +112,212 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
 /* ===========================
-   Light Theme
+   LIGHT THEME
 =========================== */
 
 body[data-theme="light"] {
   background: #f5f7fb;
   color: #222;
-  transition: all 0.3s ease;
+}
+
+body[data-theme="light"] #root {
+  background: #f5f7fb;
+}
+
+body[data-theme="light"] h1,
+body[data-theme="light"] h2,
+body[data-theme="light"] h3,
+body[data-theme="light"] h4 {
+  color: #08060d;
 }
 
 /* ===========================
-   Dark Theme
+   DARK THEME
 =========================== */
 
 body[data-theme="dark"] {
-  background: #121212;
-  color: white;
-  transition: all 0.3s ease;
+  background: #111827 !important;
+  color: #f9fafb !important;
 }
+
+body[data-theme="dark"] #root {
+  background: #111827;
+  border-color: #374151;
+}
+
+/* ===========================
+   DARK HEADINGS
+=========================== */
+
+body[data-theme="dark"] h1,
+body[data-theme="dark"] h2,
+body[data-theme="dark"] h3,
+body[data-theme="dark"] h4,
+body[data-theme="dark"] h5,
+body[data-theme="dark"] h6 {
+  color: #ffffff !important;
+}
+
+body[data-theme="dark"] p,
+body[data-theme="dark"] span {
+  color: #f3f4f6;
+}
+
+/* ===========================
+   WELCOME SECTION
+=========================== */
+
+body[data-theme="dark"] .welcome-card {
+  background: linear-gradient(
+    135deg,
+    #1e3a8a,
+    #0f172a
+  ) !important;
+
+  color: #ffffff !important;
+}
+
+body[data-theme="dark"] .welcome-card h1,
+body[data-theme="dark"] .welcome-card h2,
+body[data-theme="dark"] .welcome-card h3,
+body[data-theme="dark"] .welcome-card p,
+body[data-theme="dark"] .welcome-card span {
+  color: #ffffff !important;
+}
+
+/* ===========================
+   CARDS
+=========================== */
 
 body[data-theme="dark"] .card {
-  background: #1e1e1e;
-  color: white;
+  background: #1f2937 !important;
+  color: #ffffff !important;
+  border-color: #374151;
 }
 
-body[data-theme="dark"] .table {
-  color: white;
+body[data-theme="dark"] .dashboard-card {
+  background: #1f2937 !important;
+  color: #ffffff !important;
+
+  border: 1px solid #374151;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
-body[data-theme="dark"] .table-dark {
-  background: #000;
+body[data-theme="dark"] .dashboard-card h1,
+body[data-theme="dark"] .dashboard-card h2,
+body[data-theme="dark"] .dashboard-card h3 {
+  color: #ffffff !important;
 }
 
-body[data-theme="dark"] .form-control,
-body[data-theme="dark"] .form-select {
-  background: #2b2b2b;
-  color: white;
-  border: 1px solid #555;
-}
-
-body[data-theme="dark"] .form-control::placeholder {
-  color: #bbb;
-}
-
-body[data-theme="dark"] .btn-outline-primary {
-  color: white;
-  border-color: white;
+body[data-theme="dark"] .dashboard-card p {
+  color: #d1d5db !important;
 }
 
 body[data-theme="dark"] .dashboard-card:hover {
   transform: translateY(-6px);
+
+  box-shadow:
+    0 20px 45px rgba(59, 130, 246, 0.35);
+}
+
+/* ===========================
+   TABLE
+=========================== */
+
+body[data-theme="dark"] .table {
+  color: #ffffff !important;
+  background: #1f2937;
+}
+
+body[data-theme="dark"] .table td,
+body[data-theme="dark"] .table th {
+  color: #ffffff !important;
+  background: #1f2937 !important;
+  border-color: #374151;
+}
+
+body[data-theme="dark"] .table-dark {
+  background: #0f172a !important;
+}
+
+/* ===========================
+   FORMS
+=========================== */
+
+body[data-theme="dark"] .form-control,
+body[data-theme="dark"] .form-select {
+  background: #374151 !important;
+  color: #ffffff !important;
+  border: 1px solid #4b5563;
+}
+
+body[data-theme="dark"] .form-control::placeholder {
+  color: #d1d5db;
+}
+
+body[data-theme="dark"] .form-control:focus,
+body[data-theme="dark"] .form-select:focus {
+  background: #374151;
+  color: #ffffff;
+
+  border-color: #3b82f6;
+
+  box-shadow:
+    0 0 0 0.25rem rgba(59, 130, 246, 0.25);
+}
+
+/* ===========================
+   BUTTONS
+=========================== */
+
+body[data-theme="dark"] .btn-outline-primary {
+  color: #ffffff;
+  border-color: #60a5fa;
+}
+
+body[data-theme="dark"] .btn-outline-primary:hover {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+body[data-theme="dark"] .btn-dark {
+  background: #f9fafb;
+  color: #111827;
+  border: none;
+}
+
+/* ===========================
+   LINKS
+=========================== */
+
+body[data-theme="dark"] a {
+  color: #60a5fa;
+}
+
+body[data-theme="dark"] a:hover {
+  color: #93c5fd;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media (max-width: 1024px) {
+  :root {
+    font-size: 16px;
+  }
+
+  h1 {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
 }
