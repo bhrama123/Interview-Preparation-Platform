@@ -15,15 +15,16 @@ function Quiz() {
 
   const loadQuiz = async () => {
     try {
-      // ✅ Correct API
       const res = await api.get("/quiz");
+
+      console.log("Quiz Questions:", res.data);
 
       setQuestions(res.data);
       setCurrent(0);
       setScore(0);
       setLoading(false);
     } catch (err) {
-      console.log(err);
+      console.log("Load Quiz Error:", err);
       alert("Failed to load quiz");
       setLoading(false);
     }
@@ -40,12 +41,22 @@ function Quiz() {
     if (current < questions.length - 1) {
       setCurrent(current + 1);
     } else {
+      console.log("Quiz Finished");
+
+      console.log("User:", user);
+
+      const payload = {
+        userId: user?._id || user?.id,
+        score: newScore,
+        total: questions.length,
+      };
+
+      console.log("Sending Payload:", payload);
+
       try {
-        await api.post("/quiz", {
-          userId: user._id || user.id,
-          score: newScore,
-          total: questions.length,
-        });
+        const response = await api.post("/quiz", payload);
+
+        console.log("Server Response:", response.data);
 
         alert(
           `🎉 Quiz Finished!\n\nScore: ${newScore}/${questions.length}`
@@ -53,7 +64,13 @@ function Quiz() {
 
         loadQuiz();
       } catch (err) {
-        console.log(err);
+        console.log("POST ERROR:", err);
+
+        if (err.response) {
+          console.log("Status:", err.response.status);
+          console.log("Response:", err.response.data);
+        }
+
         alert("Failed to save quiz result");
       }
     }
@@ -78,7 +95,6 @@ function Quiz() {
   return (
     <div className="container py-5">
       <div className="card shadow p-5">
-
         <h2 className="text-center mb-4">
           Question {current + 1} / {questions.length}
         </h2>
@@ -96,7 +112,6 @@ function Quiz() {
             {option}
           </button>
         ))}
-
       </div>
     </div>
   );
