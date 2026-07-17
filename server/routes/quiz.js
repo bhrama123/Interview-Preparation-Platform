@@ -34,18 +34,14 @@ router.get("/", async (req, res) => {
 // ======================================
 
 router.post("/", async (req, res) => {
-  try {
+  console.log("========== QUIZ POST HIT ==========");
+  console.log(req.body);
 
-    console.log("Received Body:", req.body);
-
-    const { userId, score, total } = req.body;
-
-    // Validate required fields
-    if (!userId || score === undefined || total === undefined) {
-      return res.status(400).json({
-        message: "userId, score and total are required",
-      });
-    }
+  return res.json({
+    success: true,
+    body: req.body,
+  });
+});
 
     // Validate MongoDB ObjectId
     if (!mongoose.Types.ObjectId.isValid(userId)) {
